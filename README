@@ -1,5 +1,9 @@
 Doc Search Web Server
 ------------------------------------------------------------------------------------------------------
+DEMO LINK:
+This server is live on Amazon Web Services at
+http://3.16.149.228:1235/docs
+It's various methods can be accessed via RESTclient.
 
 Description:
 [-] This project creates a server which will serve all the HTTP requests from client.
