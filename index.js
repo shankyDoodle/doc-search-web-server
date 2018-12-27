@@ -87,7 +87,9 @@ async function resetData(finder, args) {
 async function go(args) {
   const resources = {};
   try {
-    if (!/^mongodb\:\/\/.+?\:\d+\/\w+$/.test(args[0])) {
+
+    /**Support for custom as well as mongoAtlas Cluster */
+    if (args[0] != "mongoAtlas" && !/^mongodb\:\/\/.+?\:\d+\/\w+$/.test(args[0])) {
       console.error('bad mongo-db url; must be of form ' +
 		    'mongodb://SERVER:PORT/DBNAME');
       usage();

@@ -33,7 +33,13 @@ class DocFinder {
    *  DocFinder.
    */
   static async create(dbUrl) {
-    const [, mongoUrl, dbName] = dbUrl.match(/^(.+?)\/(\w+)$/);
+    let mongoUrl, dbName;
+    if(dbUrl === "mongoAtlas"){
+      mongoUrl = "mongodb+srv://shankydoodle:3dYVAShrsanaQVYH@cluster0-dyr1y.mongodb.net/test?retryWrites=true&authSource=admin";
+      dbName = "test";
+    }else{
+      [, mongoUrl, dbName] = dbUrl.match(/^(.+?)\/(\w+)$/);
+    }
     const client = await mongo.connect(mongoUrl, MONGO_OPTIONS);
     const finder = new DocFinder(mongoUrl, dbName, client);
     await finder.db.createCollection(NOISE_TABLE);
